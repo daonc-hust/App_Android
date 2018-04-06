@@ -169,19 +169,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-//        database.child("SanPham").child("DoTho").child("AnGian").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                arrayProduct.add(new Product("ab", 3, "https://dogotinhsau.com/wp-content/uploads/2018/01/an-gian-350x450.jpg",
-//                        "Án Gian Gỗ Mít", dataSnapshot.getValue(Integer.class)));
-//                adapterProduct.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
+
         database.child("SanPham").child("GiuongNgu").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -244,14 +232,12 @@ public class MainActivity extends AppCompatActivity {
         typeArrayList = new ArrayList<>();
         adapterProductType = new ProductTypeAdapter(this, R.layout.raw_product_type, typeArrayList);
         lvMainScreen.setAdapter(adapterProductType);
-        //typeArrayList.add(new ProductType("https://pbs.twimg.com/profile_images/578114316634714112/moAKi404_400x400.png", "Trang chính"));
+        
         typeArrayList.add(new ProductType("http://help.joescan.com/download/attachments/360466/081552-glossy-waxed-wood-icon-business-home5.png?api=v2", "Trang chính"));
         typeArrayList.add(new ProductType("http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons-256/glossy-waxed-wood-icons-business/081614-glossy-waxed-wood-icon-business-phone-solid.png", "Thông tin"));
         typeArrayList.add(new ProductType("http://soncuago.net/wp-content/uploads/2016/04/1684-bo-ban-ghe-go-trien-tay-10-6-mon-go-xoan-dao-sl2341.jpg", "Bàn ghế"));
         typeArrayList.add(new ProductType("http://dogoyenlac.com/wp-content/uploads/2015/11/tu-tho-go-dieu-khac-01.png", "Tủ thờ"));
-        //typeArrayList.add(new ProductType("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStAJ-vfASBEQxrBRIWmk-xY1O-pGbitNsa3Gzv4S8TV7q22OPs", "Liên hệ"));
-        //typeArrayList.add(new ProductType("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5kw5TQO8Lm08Riqc2fNepnx9Yb5U-_mT3OOVU6tx3tBdGlL9j", "Thông tin"));
-
+        
         arrayProduct = new ArrayList<>();
         adapterProduct = new ProductAdapter(this, R.layout.raw_new_product, arrayProduct);
         rvMainScreen.setHasFixedSize(true);
