@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <ImageView
+        android:src="@drawable/fui_ic_googleg_color_24dp"
+        android:id="@+id/imageViewProductType"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
+    <TextView
+        android:textStyle="bold"
+        android:text="Loai san pham"
+        android:id="@+id/textViewProductType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageViewProductType"
+        android:layout_marginBottom="39dp"
+        android:layout_marginStart="12dp"
+        android:layout_toEndOf="@+id/imageViewProductType"
+        android:textColor="#000000"
+        android:textSize="25sp" />
+
+</RelativeLayout>
