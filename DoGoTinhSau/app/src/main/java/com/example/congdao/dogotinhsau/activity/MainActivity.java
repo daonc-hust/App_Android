@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -21,6 +23,7 @@ import android.widget.ViewFlipper;
 import com.example.congdao.dogotinhsau.R;
 import com.example.congdao.dogotinhsau.adapter.ProductAdapter;
 import com.example.congdao.dogotinhsau.adapter.ProductTypeAdapter;
+import com.example.congdao.dogotinhsau.model.Basket;
 import com.example.congdao.dogotinhsau.model.Product;
 import com.example.congdao.dogotinhsau.model.ProductType;
 import com.example.congdao.dogotinhsau.ulti.CheckConnection;
@@ -48,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
     ProductAdapter adapterProduct;
     ProductTypeAdapter adapterProductType;
 
+    public static ArrayList<Basket> basketArrayList;
+
     public DatabaseReference database;
 
     @Override
@@ -69,6 +74,23 @@ public class MainActivity extends AppCompatActivity {
             ActionBar();
             ActionViewFlipper();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menuBasket:
+                Intent intent = new Intent(getApplicationContext(), OrderActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void CatchOnItemListView() {
@@ -240,6 +262,12 @@ public class MainActivity extends AppCompatActivity {
         rvMainScreen = (RecyclerView) findViewById(R.id.recyclerViewMainScreen);
         lvMainScreen = (ListView) findViewById(R.id.listViewMainScreen);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+
+        if (basketArrayList != null) {
+
+        } else {
+            basketArrayList = new ArrayList<>();
+        }
 
         typeArrayList = new ArrayList<>();
         adapterProductType = new ProductTypeAdapter(this, R.layout.raw_product_type, typeArrayList);

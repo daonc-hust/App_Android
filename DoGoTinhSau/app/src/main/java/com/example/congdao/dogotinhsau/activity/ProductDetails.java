@@ -12,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.congdao.dogotinhsau.R;
+import com.example.congdao.dogotinhsau.model.Basket;
 import com.example.congdao.dogotinhsau.model.Product;
 import com.squareup.picasso.Picasso;
 
@@ -24,6 +25,11 @@ public class ProductDetails extends AppCompatActivity {
     ImageView imgProductDetails;
     Spinner spinner;
     Button btnOrder;
+    String describe = "";
+    int id = 0;
+    String imageDetails = "";
+    String nameDetails = "";
+    Integer priceDetails = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +44,30 @@ public class ProductDetails extends AppCompatActivity {
         btnOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ProductDetails.this, OrderActivity.class);
+                int newNumber = Integer.parseInt(spinner.getSelectedItem().toString());
+                boolean exists = false;
+                if (MainActivity.basketArrayList.size() > 0) {
+                    for (int i = 0; i < MainActivity.basketArrayList.size(); i++) {
+                        if (MainActivity.basketArrayList.get(i).getId() == id) {
+                            MainActivity.basketArrayList.get(i).setNumber(MainActivity.basketArrayList.get(i).getNumber() + newNumber);
+                            MainActivity.basketArrayList.get(i).setPrice(priceDetails * MainActivity.basketArrayList.get(i).getNumber());
+                            exists = true;
+                        }
+
+                        if (exists == false) {
+                            int number = Integer.parseInt(spinner.getSelectedItem().toString());
+                            long newPrice = number * priceDetails;
+                            MainActivity.basketArrayList.add(new Basket(id, nameDetails, newPrice, imageDetails, number));
+                        }
+                    }
+
+                } else {
+                    int number = Integer.parseInt(spinner.getSelectedItem().toString());
+                    long newPrice = number * priceDetails;
+                    MainActivity.basketArrayList.add(new Basket(id, nameDetails, newPrice, imageDetails, number));
+                }
+
+                Intent intent = new Intent(getApplicationContext(), OrderActivity.class);
                 startActivity(intent);
             }
         });
@@ -51,11 +80,7 @@ public class ProductDetails extends AppCompatActivity {
     }
 
     private void GetInformationProduct() {
-        String describe = "";
-        int id = 0;
-        String imageDetails = "";
-        String nameDetails = "";
-        Integer priceDetails = 0;
+
 
         Product product = (Product) getIntent().getSerializableExtra("ThongTinSanPham");
         describe = product.getDescribe();

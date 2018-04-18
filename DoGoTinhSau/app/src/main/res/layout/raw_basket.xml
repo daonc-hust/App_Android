@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:weightSum="10"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_weight="3.5"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/imageProduct"
+            android:layout_width="120dp"
+            android:layout_height="120dp" />
+
+    </LinearLayout>
+
+   <LinearLayout
+       android:orientation="vertical"
+       android:layout_weight="6.5"
+       android:layout_width="0dp"
+       android:layout_height="match_parent">
+
+       <TextView
+           android:textColor="#000000"
+           android:id="@+id/textName"
+           android:layout_gravity="center"
+           android:textSize="25sp"
+           android:text="Tên món hàng"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+
+       <TextView
+           android:id="@+id/textPrice"
+           android:textColor="#ff00"
+           android:layout_gravity="center"
+           android:textSize="20sp"
+           android:text="Giá tiền"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+       <LinearLayout
+           android:gravity="center"
+           android:layout_marginTop="10dp"
+           android:orientation="horizontal"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <Button
+               android:gravity="center"
+               android:id="@+id/buttonMinus"
+               android:focusable="false"
+               android:textSize="30sp"
+               android:text="-"
+               android:layout_width="50dp"
+               android:layout_height="50dp" />
+
+           <Button
+               android:gravity="center"
+               android:id="@+id/buttonValues"
+               android:layout_width="50dp"
+               android:layout_height="50dp"
+               android:background="@null"
+               android:focusable="false"
+               android:text="1"
+               android:textSize="20sp" />
+
+           <Button
+               android:gravity="center"
+               android:id="@+id/buttonPlus"
+               android:layout_width="50dp"
+               android:layout_height="50dp"
+               android:focusable="false"
+               android:text="+"
+               android:textSize="30sp" />
+
+       </LinearLayout>
+
+   </LinearLayout>
+
+
+</LinearLayout>
